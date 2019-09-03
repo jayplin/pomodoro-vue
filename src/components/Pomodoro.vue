@@ -1,12 +1,14 @@
 <template>
-  <div class="hello">
+  <div class="pom">
     <h1>{{ msg }}</h1>
+    <input v-model="message" placeholder="type task name" />
+    <p>Message is: {{ message }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Pomodoro",
   props: {
     msg: String
   }
