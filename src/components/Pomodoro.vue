@@ -2,9 +2,9 @@
   <div class="pom">
     <h1>{{ msg }}</h1>
     <p>Task: {{ task }}</p>
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <timer v-on:add-Pomodoro="addPomodoro" v-on:Change-Status-To-Finished="changeStatusToFinished"></timer>
     <input v-model="task" placeholder="type task name" />
-    <button v-on:click="start">Start</button>
+
     <button v-on:click="reset">Reset</button>
   </div>
 </template>
@@ -23,11 +23,12 @@ export default {
   data: function() {
     return {
       task: "",
-      finished: "false"
+      finished: "false",
+      timerStarted: "false"
     };
   },
   methods: {
-    start: function() {
+    addPomodoro: function() {
       //post current task from input field
       axios
         .post("https://pomodoro-node-api.herokuapp.com/pomodoros", {
@@ -43,6 +44,10 @@ export default {
         });
 
       //start timer
+    },
+    changeStatusToFinished: function() {
+      this.finished = true;
+      console.log(this.finished);
     },
     reset: function() {
       //set time to 0
