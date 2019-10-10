@@ -31,7 +31,8 @@ export default {
   data() {
     return {
       isRunning: false,
-      time: 25 * 60,
+      pomodoroDuration: 5,
+      time: 5,
       timer: null,
       sound: new Audio(
         "http://s1download-universal-soundbank.com/wav/nudge.wav"
@@ -49,7 +50,7 @@ export default {
   methods: {
     start() {
       //only add pomodoro to database if timer is starting from 25 minutes
-      if(this.time == 25*60){
+      if (this.time == this.pomodoroDuration) {
         this.$emit("add-Pomodoro");
       }
 
@@ -73,9 +74,9 @@ export default {
       this.timer = null;
     },
     reset() {
-     // this.$emit("Change-Status-To-Finished");
+      // this.$emit("Change-Status-To-Finished");
       this.stop();
-      this.time = 25 * 60;
+      this.time = this.pomodoroDuration;
     },
     setTime(payload) {
       this.time = payload.minutes * 60 + payload.seconds;
