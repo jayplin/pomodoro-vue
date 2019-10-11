@@ -1,5 +1,5 @@
 # pomodoro-vue
-testing in vue: https://medium.com/javascript-in-plain-english/add-test-coverage-to-vue-js-app-with-jest-travis-ci-and-coveralls-d10d118125c2
+testing in vue with jest and testcafe: https://medium.com/javascript-in-plain-english/add-test-coverage-to-vue-js-app-with-jest-travis-ci-and-coveralls-d10d118125c2
 
 ## Project setup
 ```
