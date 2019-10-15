@@ -1,9 +1,21 @@
 <template>
   <v-container fill-height>
-    <v-layout text-center wrap align-center="true" justify-center="true">
+    <v-layout text-center wrap align-center="true">
       <div class="pom">
         <h1>{{ msg }}</h1>
-        <p>Task: {{ task_name }}</p>
+        <p class="taskname">Task: {{ task_name }}</p>
+        <timer
+          v-on:add-Pomodoro="addPomodoro"
+          v-on:Change-Status-To-Finished="changeStatusToFinished"
+        ></timer>
+        <v-text-field v-model="task_name" placeholder="type task name"/>
+      </div>
+    </v-layout>
+
+    <v-layout text-center wrap align-center="true" justify-end="true">
+      <div class="pom">
+        <h1>{{ msg }}</h1>
+        <p class="taskname">Task: {{ task_name }}</p>
         <timer
           v-on:add-Pomodoro="addPomodoro"
           v-on:Change-Status-To-Finished="changeStatusToFinished"
@@ -94,3 +106,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+p.taskname {
+  font-size: 300%;
+}
+</style>
