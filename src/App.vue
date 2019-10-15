@@ -1,27 +1,30 @@
 <template>
-  <div id="app">
-    <Pomodoro msg="Pomodoro" />
-  </div>
+  <v-app>
+    <v-app-bar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>POMO</span>
+        <span class="font-weight-light">DORO</span>
+      </v-toolbar-title>
+    </v-app-bar>
+
+    <v-content>
+      <Pomodoro />
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import Pomodoro from "./components/Pomodoro.vue";
+import Pomodoro from "./components/Pomodoro";
 
 export default {
-  name: "app",
+  name: "App",
   components: {
     Pomodoro
-  }
+  },
+  data: () => ({
+    //
+  })
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss" scoped></style>
