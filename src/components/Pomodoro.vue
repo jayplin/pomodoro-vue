@@ -1,13 +1,17 @@
 <template>
-  <div class="pom">
-    <h1>{{ msg }}</h1>
-    <p>Task: {{ task_name }}</p>
-    <timer
-      v-on:add-Pomodoro="addPomodoro"
-      v-on:Change-Status-To-Finished="changeStatusToFinished"
-    ></timer>
-    <input v-model="task_name" placeholder="type task name" />
-  </div>
+  <v-container fill-height>
+    <v-layout text-center wrap align-center="true" justify-center="true">
+      <div class="pom">
+        <h1>{{ msg }}</h1>
+        <p>Task: {{ task_name }}</p>
+        <timer
+          v-on:add-Pomodoro="addPomodoro"
+          v-on:Change-Status-To-Finished="changeStatusToFinished"
+        ></timer>
+        <v-text-field v-model="task_name" placeholder="type task name"/>
+      </div>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -90,19 +94,3 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

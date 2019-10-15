@@ -3,9 +3,9 @@
     <div>
       <div class="timer">{{ prettyTime | prettify }}</div>
       <div>
-        <button v-if="!isRunning" @click="start">Start</button>
-        <button v-if="isRunning" @click="stop">Stop</button>
-        <button @click="reset">Reset</button>
+        <v-btn color="primary" v-if="!isRunning" @click="start">Start</v-btn>
+        <v-btn color="error" v-if="isRunning" @click="stop">Stop</v-btn>
+        <v-btn color="error" @click="reset">Reset</v-btn>
       </div>
     </div>
   </div>
