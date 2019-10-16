@@ -1,29 +1,10 @@
 <template>
-  <v-container fill-height>
-    <v-layout text-center wrap align-center="true">
-      <div class="pom">
-        <h1>{{ msg }}</h1>
-        <p class="taskname">Task: {{ task_name }}</p>
-        <timer
-          v-on:add-Pomodoro="addPomodoro"
-          v-on:Change-Status-To-Finished="changeStatusToFinished"
-        ></timer>
-        <v-text-field v-model="task_name" placeholder="type task name"/>
-      </div>
-    </v-layout>
-
-    <v-layout text-center wrap align-center="true" justify-end="true">
-      <div class="pom">
-        <h1>{{ msg }}</h1>
-        <p class="taskname">Task: {{ task_name }}</p>
-        <timer
-          v-on:add-Pomodoro="addPomodoro"
-          v-on:Change-Status-To-Finished="changeStatusToFinished"
-        ></timer>
-        <v-text-field v-model="task_name" placeholder="type task name"/>
-      </div>
-    </v-layout>
-  </v-container>
+  <div class="pom">
+    <h1>{{ msg }}</h1>
+    <p class="taskname">Task: {{ task_name }}</p>
+    <timer v-on:add-Pomodoro="addPomodoro" v-on:Change-Status-To-Finished="changeStatusToFinished"></timer>
+    <v-text-field v-model="task_name" placeholder="type task name"/>
+  </div>
 </template>
 
 <script>
@@ -73,6 +54,7 @@ export default {
     },
     changeStatusToFinished: function() {
       this.finished = true;
+      this.turnDeskOnAndOFF();
 
       //change on database
       axios
@@ -100,6 +82,23 @@ export default {
       this.timestamp = "";
       this.finished = false;
       this.task_name = "";
+    },
+    turnDeskOnAndOFF: async function() {
+      axios.post(
+        "http://openhabianpi:8080/rest/items/Licht_Schreibtisch",
+        "OFF",
+        {
+          headers: { "Content-Type": "text/plain" }
+        }
+      );
+      await new Promise(done => setTimeout(done, 2000));
+      axios.post(
+        "http://openhabianpi:8080/rest/items/Licht_Schreibtisch",
+        "ON",
+        {
+          headers: { "Content-Type": "text/plain" }
+        }
+      );
     }
   }
 };
